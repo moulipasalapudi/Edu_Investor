@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Add Feedback</h2>
+  <textarea [(ngModel)]="feedbackText" placeholder="Enter your feedback"></textarea>
+  <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  <button (click)="submitFeedback()">Submit</button>
+ 
+  <div class="popup" *ngIf="showPopup">
+    <p>Successfully Added!</p>
+    <button (click)="closePopup()">OK</button>
+  </div>
+</div>
+ 

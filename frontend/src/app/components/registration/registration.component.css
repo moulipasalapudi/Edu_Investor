@@ -1,0 +1,105 @@
+:root {
+  --pastel-blue: #aec6cf;
+  --pastel-green: #c1e1c1;
+  --pastel-yellow: #ffef96;
+  --pastel-gray: #d3d3d3;
+  --pastel-light-yellow: #fffacd; /* lighter shade for buttons */
+}
+ 
+.hover-color-change:hover {
+  color: darkgreen;
+}
+ 
+.btn {
+  background-color: var(--pastel-yellow);
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+ 
+.btn:hover {
+  background-color: var(--pastel-light-yellow);
+}
+ 
+.main-content {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+.main-content:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+ 
+.form-input,
+.form-select {
+  padding: 12px;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+}
+ 
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--pastel-green);
+  outline: none;
+}
+ 
+.button-enabled {
+  background-color: #3b82f6; /* Blue color */
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+ 
+.button-enabled:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+}
+ 
+.button-disabled {
+  background-color: #d3d3d3; /* Gray color */
+  color: #888;
+  cursor: not-allowed;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+ 
+span {
+  color: red;
+}
+ 
+.leading-tight p {
+  line-height: 1.25; /* Adjusted for reduced gap */
+}
+ 
+/* New code for container opacity and background image translucency */
+.container {
+  background-color: white; /* White background for form content */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1; /* Ensure it is above the background image */
+}
+ 
+.background-image {
+  background-image: url('https://akm-img-a-in.tosshub.com/indiatoday/images/story/202501/hfdbouegfb-245821849-16x9_0.jpg?VersionId=M7dwFDiYsgB_JhBkNhnYNS9mghBZ4pCr&size=690:388');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1; /* 50% opacity for translucency */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure the background image is behind other elements */
+}

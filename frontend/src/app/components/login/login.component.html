@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoanPlanner Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-pastel-blue text-pastel-gray">
+ 
+    <main class="bg-cover bg-center min-h-screen bg-pastel-blue" style="background-image: url('https://thumbs.dreamstime.com/b/old-book-flying-letters-magic-light-background-bookshelf-library-ancient-books-as-symbol-knowledge-history-218640948.jpg');">
+        <div class="bg-pastel-green bg-opacity-70 min-h-screen flex flex-col items-center justify-center p-4 fade-in">
+            <div class="bg-white bg-opacity-70 p-4 md:p-8 rounded-lg shadow-lg w-full max-w-lg text-center main-content">
+                <h3 class="text-3xl md:text-4xl font text-gray-800 mb-4 md:mb-6">Login</h3>
+                <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="w-full max-w-lg mx-auto text-left">
+                    <div class="form-group mb-4">
+                        <label for="email" class="block text-gray-700 font mb-2 w-32">Email <span>*</span></label>
+                        <input type="email" id="email" formControlName="email" required class="form-input mt-1 block w-full" placeholder="Email">
+                        <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched" class="text-red-600 mt-2">
+                            <small *ngIf="loginForm.get('email').errors?.required">Email is required.</small>
+                            <small *ngIf="loginForm.get('email').errors?.email">Invalid email address.</small>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group mb-4">
+                        <label for="password" class="block text-gray-700 font mb-2 w-32">Password <span>*</span></label>
+                        <input type="password" id="password" formControlName="password" required class="form-input mt-1 block w-full" placeholder="Password">
+                        <div *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched" class="text-red-600 mt-2">
+                            <small *ngIf="loginForm.get('password').errors?.required">Password is required.</small>
+                        </div>
+                    </div>
+ 
+                    <button type="submit" [disabled]="loginForm.invalid" class="w-full mt-4">Login</button>
+                   
+                    <div *ngIf="loginMessage" class="text-red-600 mt-4">
+                        {{ loginMessage }}
+                    </div>
+ 
+                    <div class="register-link mt-4 text-center">
+                        Don't have an account? <a routerLink="/registration" class="text-blue-500 hover:underline">Register here</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+ 
+</body>
+</html>
+ 

@@ -1,0 +1,124 @@
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+ 
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+ 
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+ 
+.header hr {
+  flex-grow: 1;
+  margin: 0 20px;
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+}
+ 
+.header .search-box {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+ 
+.header .search-box:focus {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+ 
+/* Loan Container */
+.loan-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+ 
+/* Loan Card */
+.loan-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: calc(33.333% - 20px);
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+ 
+.loan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+ 
+.loan-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #007bff;
+}
+ 
+.loan-details p {
+  margin: 5px 0;
+  color: #555;
+}
+ 
+.loan-details strong {
+  color: #333;
+}
+ 
+/* Loan Actions */
+.loan-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+ 
+.loan-actions .edit-btn,
+.loan-actions .delete-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+}
+ 
+.loan-actions .edit-btn {
+  background-color: #007bff;
+}
+ 
+.loan-actions .edit-btn:hover {
+  background-color: #0056b3;
+}
+ 
+.loan-actions .delete-btn {
+  background-color: #dc3545;
+}
+ 
+.loan-actions .delete-btn:hover {
+  background-color: #c82333;
+}
+ 
+/* No Records Template */
+.no-records {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  margin-top: 20px;
+}

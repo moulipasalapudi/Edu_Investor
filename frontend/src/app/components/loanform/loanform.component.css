@@ -1,0 +1,75 @@
+.loan-form-container {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+ 
+h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+}
+ 
+form {
+    display: flex;
+    flex-direction: column;
+}
+ 
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
+}
+ 
+input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+ 
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+ 
+button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 4px;
+}
+ 
+button[type="submit"] {
+    background-color: green;
+    color: white;
+}
+ 
+button[type="submit"]:disabled {
+    background-color: lightgrey;
+    cursor: not-allowed;
+}
+ 
+button[type="button"] {
+    background-color: #007bff;
+    color: white;
+}
+ 
+.popup {
+    background: #dff0d8;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    color: #155724;
+}

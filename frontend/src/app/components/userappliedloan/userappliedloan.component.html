@@ -1,0 +1,34 @@
+<div>
+    <input type="text" [(ngModel)]="searchText" placeholder="Search loans...">
+    <table>
+    <thead>
+    <tr>
+    <th>Loan Name</th>
+    <th>Submission Date</th>
+    <th>Status</th>
+    <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let loan of appliedLoans">
+    <td>{{ getLoanType(loan.loan.loanId) }}</td>
+    <td>{{ loan.submissionDate | date }}</td>
+    <td>{{ loan.loanStatus }}</td>
+    <td>
+    <button (click)="confirmDelete(loan.loanApplicationId)">Delete</button>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <ng-template #noRecords>
+    <div>Oops! No records found.</div>
+    </ng-template>
+    </div>
+     
+    <div *ngIf="showDeletePopup">
+    <div class="popup">
+    <p>Are you sure you want to delete this loan?</p>
+    <button (click)="deleteLoan()">Yes, Delete</button>
+    <button (click)="cancelDelete()">Cancel</button>
+    </div>
+    </div>

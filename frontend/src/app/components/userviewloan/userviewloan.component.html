@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>User View Loans</h2>
+  <table class="loan-table">
+    <thead>
+      <tr>
+        <th>Loan Type</th>
+        <th>Description</th>
+        <th>Interest Rate</th>
+        <th>Max Amount</th>
+        <th>Repayment Tenure</th>
+        <th>Eligibility</th>
+        <th>Documents Required</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loans of loan">
+        <td>{{ loans.loanType }}</td>
+        <td>{{ loans.description }}</td>
+        <td>{{ loans.interestRate }}%</td>
+        <td>₹{{ loans.maximumAmount }}</td>
+        <td>{{ loans.repaymentTenure }} years</td>
+        <td>{{ loans.eligibility }}</td>
+        <td>{{ loans.documentsRequired }}</td>
+        <td>
+          <button
+            *ngIf="isApplied(loans.loanId)"
+            class="btn applied"
+            disabled
+          >
+            Applied
+          </button>
+          <button
+            *ngIf="!isApplied(loans.loanId)"
+            class="btn apply"
+            (click)="applyLoan(loans.loanId)"
+          >
+            Apply
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

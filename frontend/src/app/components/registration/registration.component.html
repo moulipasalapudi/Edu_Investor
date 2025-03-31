@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Edu Investor Registration</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+ 
+  </style>
+</head>
+<body class="bg-pastel-blue text-pastel-gray">
+ 
+  <main class="bg-cover bg-center bg-opacity-30 min-h-screen bg-pastel-blue" style="background-image: url('https://cache.careers360.mobi/media/article_images/2024/3/29/SBI_Education_Loan.jpg');">
+    <div class="bg-pastel-green bg-opacity-98 min-h-screen flex flex-col items-center justify-center p-4 fade-in">
+      <div class="bg-white bg-opacity-98 p-4 md:p-8 rounded-lg shadow-lg w-full max-w-lg text-center main-content">
+        <h3 class="text-3xl md:text-4xl font text-gray-800 mb-4 md:mb-6">Registration</h3>
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" class="w-full max-w-lg mx-auto text-left">
+          <div class="form-group mb-4">
+            <label for="username" class="block text-gray-700 font mb-2">Username <span>*</span></label>
+            <input type="text" id="username" name="username" ngModel required #username="ngModel" class="form-input mt-1 block w-full" placeholder="Username">
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-red-600 mt-2">
+              *Username is required.
+            </div>
+          </div>
+     
+          <div class="form-group mb-4">
+            <label for="email" class="block text-gray-700 font mb-2">Email <span>*</span></label>
+            <input type="email" id="email" name="email" ngModel required email #email="ngModel" class="form-input mt-1 block w-full" placeholder="Email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-red-600 mt-2">
+              <div *ngIf="email.hasError('required')">
+                *Email is required.
+              </div>
+              <div *ngIf="email.hasError('email')">
+                Please enter a valid email.
+              </div>
+            </div>
+          </div>
+     
+          <div class="form-group mb-4">
+            <label for="password" class="block text-gray-700 font mb-2">Password <span>*</span></label>
+            <input type="password" id="password" name="password" ngModel required #password="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" class="form-input mt-1 block w-full" placeholder="Password">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-red-600 mt-2">
+              <div *ngIf="password.hasError('required')">
+                Password is required.
+              </div>
+              <div *ngIf="password.hasError('pattern')">
+                Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character.
+              </div>
+            </div>
+          </div>
+     
+          <div class="form-group mb-4">
+            <label for="confirmPassword" class="block text-gray-700 font mb-2">Confirm Password <span>*</span></label>
+            <input type="password" id="confirmPassword" name="confirmPassword" ngModel required #confirmPassword="ngModel" class="form-input mt-1 block w-full" placeholder="Confirm Password">
+            <div *ngIf="confirmPassword.value !== password.value && confirmPassword.touched" class="text-red-600 mt-2">
+              Passwords do not match.
+            </div>
+          </div>
+     
+          <div class="form-group mb-4">
+            <label for="mobile" class="block text-gray-700 font mb-2">Mobile Number <span>*</span></label>
+            <input type="tel" id="mobile" name="mobileNumber" ngModel required pattern="^\d{10}$" #mobile="ngModel" class="form-input mt-1 block w-full" placeholder="Mobile Number">
+            <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="text-red-600 mt-2">
+              <div *ngIf="mobile.hasError('required')">
+                Mobile number is required.
+              </div>
+              <div *ngIf="mobile.hasError('pattern')">
+                Mobile number must be 10 digits.
+              </div>
+            </div>
+          </div>
+     
+          <div class="form-group mb-4">
+            <label for="userRole" class="block text-gray-700 font mb-2">Role <span>*</span></label>
+            <select id="userRole" name="role" ngModel required #role="ngModel" class="form-select mt-1 block w-full">
+              <option value="">Select Role</option>
+              <option value="USER">User</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+            <div *ngIf="role.invalid && (role.dirty || role.touched)" class="text-red-600 mt-2">
+              Role is required.
+            </div>
+          </div>
+     
+          <div *ngIf="errorMessage" class="text-red-600 mt-4">
+            {{ errorMessage }}
+          </div>
+     
+          <div *ngIf="successMessage" class="text-green-600 mt-4">
+            {{ successMessage }}
+          </div>
+     
+          <button
+            type="submit"
+            [ngClass]="{ 'button-enabled': !registerForm.invalid, 'button-disabled': registerForm.invalid }"
+            [disabled]="registerForm.invalid"
+            class="w-full mt-4"
+          >
+            Register
+          </button>
+     
+          <p class="mt-4 text-center">
+            Already have an account?
+            <a routerLink="/login" class="text-blue-500 hover:underline">Login here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </main>
+ 
+</body>
+</html>

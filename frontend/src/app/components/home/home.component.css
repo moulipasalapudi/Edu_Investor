@@ -1,0 +1,70 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    color: #4a4a4a;
+}
+ 
+/* Navbar Styles */
+app-navbar {
+    background-color: #007acc;
+    padding: 15px 30px;
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+}
+ 
+/* Home Container Styles */
+.home-container {
+    background: url('https://www.vishweshwarbank.com/Encyc/2022/3/12/education11_202203121417555203_H@@IGHT_342_W@@IDTH_512.jpg') no-repeat center center;
+    background-size: cover;
+    background-clip: padding-box;
+    padding: 30px 20px;
+    margin: 30px auto;
+    width: 70%;
+    max-width: 900px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+ 
+/* Heading Styles */
+.home-container h1 {
+    color: #656566f0;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+ 
+/* Paragraph Styles */
+.home-container p {
+    font-size: 1.0em;
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 70%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+ 
+/* Add Responsive Design */
+@media (max-width: 768px) {
+    .home-container {
+        width: 90%;
+        padding: 20px 15px;
+    }
+ 
+    .home-container h1 {
+        font-size: 2em;
+    }
+ 
+    .home-container p {
+        font-size: 1em;
+    }
+}

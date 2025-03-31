@@ -1,0 +1,55 @@
+<div class="container">
+    <h2>Loan Requests for Approval</h2>
+    <div class="filters">
+    <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="filterLoans()">
+    <select [(ngModel)]="filterStatus" (change)="filterLoans()">
+    <option value="All">All</option>
+    <option value="0">Pending</option>
+    <option value="1">Approved</option>
+    <option value="2">Rejected</option>
+    </select>
+    </div>
+    <table >
+    <thead>
+    <tr>
+    <th>S.No</th>
+    <th>Loan Type</th>
+    <th>Submission Date</th>
+    <th>Institution</th>
+    <th>Course</th>
+    <th>Tuition Fee</th>
+    <th>Status</th>
+    <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let loan of filteredLoans; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{loan.loan.loanType}}</td>
+    <td>{{ loan.submissionDate }}</td>
+    <td>{{ loan.institution }}</td>
+    <td>{{ loan.course }}</td>
+    <td>₹{{ loan.tuitionFee }}</td>
+    <td>{{ loan.loanStatus === 0 ? 'Pending' : loan.loanStatus === 1 ? 'Approved' : 'Rejected' }}</td>
+    <td>
+    <button (click)="showDetails(loan)">Show More</button>
+    <button (click)="approveLoan(loan)" [disabled]="loan.loanStatus !== 0">Approve</button>
+    <button (click)="rejectLoan(loan)" [disabled]="loan.loanStatus !== 0">Reject</button>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    <ng-template #noRecords>
+    <p>Oops! No records found.</p>
+    </ng-template>
+    <div *ngIf="selectedLoan" class="modal">
+        <div class="modal-content">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <h3>Loan Details</h3>
+            <p><strong>Address:</strong> {{ selectedLoan.address }}</p>
+            <p><strong>Proof:</strong>
+                <img *ngIf="selectedLoan.file" [src]="selectedLoan.file" class="file-image" />
+            </p>
+        </div>
+    </div>
+ 

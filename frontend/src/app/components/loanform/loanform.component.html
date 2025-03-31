@@ -1,0 +1,45 @@
+<div class="loan-form-container">
+    <h2>Loan Application Form</h2>
+    <form [formGroup]="loanForm" (ngSubmit)="onSubmit($event)">
+      <label for="institution">Institution*</label>
+      <input id="institution" formControlName="institution" type="text" />
+      <div class="error" *ngIf="loanForm.get('institution')?.touched && loanForm.get('institution')?.invalid">
+        Institution is required
+      </div>
+   
+      <label for="course">Course*</label>
+      <input id="course" formControlName="course" type="text" />
+      <div class="error" *ngIf="loanForm.get('course')?.touched && loanForm.get('course')?.invalid">
+        Course is required
+      </div>
+   
+      <label for="tuitionFee">Tuition Fee*</label>
+      <input id="tuitionFee" formControlName="tuitionFee" type="number" />
+      <div class="error" *ngIf="loanForm.get('tuitionFee')?.touched && loanForm.get('tuitionFee')?.invalid">
+        Tuition Fee is required
+      </div>
+   
+      <label for="address">Address*</label>
+      <input id="address" formControlName="address" type="text" />
+      <div class="error" *ngIf="loanForm.get('address')?.touched && loanForm.get('address')?.invalid">
+        Address is required
+      </div>
+   
+      <div class="form-group">
+        <label for="proof">Proof*</label>
+        <input id="proof" type="file" (change)="onFileChange($event)" />
+        <div class="error" *ngIf="fileError">Proof is required</div>
+        
+
+    </div>
+   
+      <button type="submit">Submit</button>
+      <button type="button" (click)="goBack()">Back</button>
+    </form>
+   
+    <!-- <div *ngIf="showSuccessPopup" class="popup">
+      <p>Successfully Added!</p>
+      <button (click)="closePopup()">Ok</button>
+    </div> -->
+  </div>
+   

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="header">
+    <h2>Edu Loans</h2>
+    <hr>
+    <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" class="search-box" />
+  </div>
+
+  <div class="loan-container">
+    <div class="loan-card" *ngFor="let loan of filteredLoans; let i = index">
+      <div class="loan-details">
+        <h3>{{ loan.loanType }}</h3>
+        <p><strong>Maximum Amount:</strong> ₹{{ loan.maximumAmount }}</p>
+        <p><strong>Interest Rate:</strong> {{ loan.interestRate }}%</p>
+        <p><strong>Repayment Tenure:</strong> {{ loan.repaymentTenure }} years</p>
+        <p><strong>Eligibility:</strong> {{ loan.eligibility }}</p>
+        <p><strong>Documents Required:</strong> {{ loan.documentsRequired }}</p>
+        <p><strong>Description:</strong> {{ loan.description }}</p>
+      </div>
+
+      <div class="loan-actions">
+        <button class="edit-btn" (click)="editLoan(loan)">Edit</button>
+        <button class="delete-btn" (click)="confirmDeleteLoan(loan.loanId)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Records Template -->
+  <ng-template #noRecords>
+    <p class="no-records">Oops! No records found</p>
+  </ng-template>
+</div>

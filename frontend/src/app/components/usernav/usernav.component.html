@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <div class="logo">EDUINVESTOR</div>
+  <ul class="nav-links">
+    <li class="user-info">{{username}}[User]💕</li>
+    <li><a routerLink="">Home</a></li>
+    <li><a routerLink="/user/view/Loans">EduLoans</a></li>
+    <li><a routerLink="/user/appliedLoan">Applied EduLoan</a></li>
+    <li class="dropdown">
+      <span (click)="toggleDropdown('feedback')">Feedback</span>
+      <ul class="dropdown-menu" *ngIf="activeDropdown === 'feedback'">
+        <li (click)="navigateTo('/user/add/Feedbacks')">Post Feedback</li>
+        <li (click)="navigateTo('/user/view/Feedbacks')">My Feedbacks</li>
+      </ul>
+    </li>
+    <li><button (click)="logout()">Logout</button></li>
+  </ul>
+</nav>

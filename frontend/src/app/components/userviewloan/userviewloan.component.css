@@ -1,0 +1,52 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+  }
+ 
+  h2 {
+    color: #333;
+  }
+ 
+  .loading {
+    color: blue;
+    font-size: 18px;
+  }
+ 
+  .no-data {
+    color: red;
+    font-size: 18px;
+  }
+ 
+  .loan-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+ 
+  .loan-table th, .loan-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+ 
+  .loan-table th {
+    background-color: #007bff;
+    color: white;
+  }
+ 
+  .btn {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+ 
+  .apply {
+    background-color: green;
+    color: white;
+  }
+ 
+  .applied {
+    background-color: gray;
+    color: white;
+  }
