@@ -73,12 +73,12 @@
      
           <div class="form-group mb-4">
             <label for="userRole" class="block text-gray-700 font mb-2">Role <span>*</span></label>
-            <select id="userRole" name="role" ngModel required #role="ngModel" class="form-select mt-1 block w-full">
+            <select id="userRole" name="userRole" ngModel required #userRole="ngModel" class="form-select mt-1 block w-full">
               <option value="">Select Role</option>
               <option value="USER">User</option>
               <option value="ADMIN">Admin</option>
             </select>
-            <div *ngIf="role.invalid && (role.dirty || role.touched)" class="text-red-600 mt-2">
+            <div *ngIf="userRole.invalid && (userRole.dirty || userRole.touched)" class="text-red-600 mt-2">
               Role is required.
             </div>
           </div>

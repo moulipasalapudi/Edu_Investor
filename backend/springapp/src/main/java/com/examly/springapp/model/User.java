@@ -11,10 +11,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
  
 // Entity class representing a User.
 // Annotated with `@Entity` to map the class to a database table.
 @Entity
+@Table(name = "users")
 public class User {
  
     // Unique identifier for a User.

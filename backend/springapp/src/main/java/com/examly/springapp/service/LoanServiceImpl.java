@@ -3,6 +3,8 @@ package com.examly.springapp.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.examly.springapp.exception.LoanAlreadyExistsException;
@@ -44,15 +46,13 @@ public class LoanServiceImpl implements LoanService {
      * @throws LoanAlreadyExistsException if a loan with the same ID already exists.
      */
     @Override
-    public Loan addLoan(Loan loan){
-        // Long id = loan.getLoanId();
-        // Loan loanFound = loanRepo.findById(id).orElse(null);
-        // if (loanFound != null) {
-        //     throw new LoanAlreadyExistsException("Loan with ID " + id + " already exists.");
-        // } else {
-            return loanRepo.save(loan);
+    public Loan addLoan(Loan loan) throws LoanAlreadyExistsException {
+        if (loanRepo.existsByLoanType(loan.getLoanType())) {
+            throw new LoanAlreadyExistsException("Loan with this name already exists");
         }
-    // }
+        return loanRepo.save(loan);
+    }
+
 
     /**
      * Retrieves a loan by ID.
@@ -61,6 +61,7 @@ public class LoanServiceImpl implements LoanService {
      * @return an `Optional` containing the `Loan` entity, if found.
      */
     @Override
+    // @Cacheable(value = "LoanById", key = "#id")
     public Optional<Loan> getLoanById(Long loanId) {
         return loanRepo.findById(loanId);
     }
@@ -71,6 +72,8 @@ public class LoanServiceImpl implements LoanService {
      * @return a list of all `Loan` entities.
      */
     @Override
+    // @Cacheable(value = "allLoans")
+
     public List<Loan> getAllLoans() {
         return loanRepo.findAll();
     }
@@ -106,6 +109,7 @@ public class LoanServiceImpl implements LoanService {
      * @return the deleted `Loan` entity, or null if not found.
      */
     @Override
+    @CacheEvict(value = "LoanById", key = "#loanId")
     public Loan deleteLoan(Long loanId) {
         Loan loan = loanRepo.findById(loanId).orElse(null);
         if (loan == null) {

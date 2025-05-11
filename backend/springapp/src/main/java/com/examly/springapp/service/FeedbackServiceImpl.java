@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.examly.springapp.exception.UserNotFoundException;
@@ -47,6 +48,7 @@ public class FeedbackServiceImpl implements FeedbackService{
      */
 
     @Override
+
     public List<Feedback> getFeedbackByUserId(Long userId) {
 
         User user = userRepo.findById(userId).orElse(null);
@@ -61,6 +63,7 @@ public class FeedbackServiceImpl implements FeedbackService{
      * @return a list of all Feedbacks
      */
     @Override
+    // @Cacheable(value="feedbacks")
     public List<Feedback> getAllFeedbacks() {
         //  return feedbackRepo.getAllFeedbacks();
         return feedbackRepo.getAllFeedbacksWithUsers();
@@ -72,6 +75,8 @@ public class FeedbackServiceImpl implements FeedbackService{
      * @return an Optional containing the feedback if found, or an empty Optional otherwise
      */
     @Override
+    @Cacheable(value = "feedbackById", key = "#id")
+    
     public Optional<Feedback> getFeedbackById(Long id) {
         return feedbackRepo.findById(id);
     }

@@ -1,8 +1,10 @@
 package com.examly.springapp.service;
  
 import java.util.List;
- 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
  
 import com.examly.springapp.config.JwtUtils;
@@ -22,14 +24,18 @@ public class UserServiceImpl implements UserService{
  
     @Autowired
     private JwtUtils jwtUtils;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
  
     @Override
     public User registerUser(User user){
+        System.out.println("UserServiceImpl: "+user);
         User existingUser = userRepo.findByEmail(user.getEmail());
         if(existingUser != null){
             // throw new EmailAlreadyExistsException("This Email.Id already exists.");
             return null;
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user);
     }
    
@@ -39,7 +45,7 @@ public class UserServiceImpl implements UserService{
     User existingUser = userRepo.findByEmail(user.getEmail());
     if(existingUser != null){
     System.out.print("\n"+existingUser+"\n");
-    if(existingUser.getPassword().equals(user.getPassword())){
+    if (passwordEncoder.matches(user.getPassword(), existingUser.getPassword())){
         
     String token = jwtUtils.generateToken(existingUser.getEmail(),existingUser.getUserRole(), existingUser.getUsername(), existingUser.getUserId());
     return new LoginDTO(existingUser.getEmail(), existingUser.getUserId(), token, existingUser.getUserRole());
@@ -60,6 +66,7 @@ return null;
  
  
     @Override
+    @Cacheable(value = "userById", key = "#id")
     public User getUserById(Long id) {
        User u= userRepo.findById(id).orElse(null);
        if(u==null)return null;

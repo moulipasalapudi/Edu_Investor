@@ -1,0 +1,140 @@
+/* Basic reset for the table and body */
+body, table, th, td {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    transition: border 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    border: 1px solid #007BFF;
+    outline: none;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+  }
+  
+  th {
+    background-color: #f4f7fb;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  td {
+    background-color: #fff;
+    color: #555;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  tr:hover td {
+    background-color: #f9f9f9;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #FF4C4C;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e04343;
+  }
+  
+  /* No records message */
+  ng-template#noRecords {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #999;
+    text-align: center;
+  }
+  
+  /* Popup styles */
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .popup p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .popup button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 10px;
+    width: 45%;
+  }
+  
+  .popup button:first-child {
+    background-color: #FF4C4C;
+    color: white;
+  }
+  
+  .popup button:first-child:hover {
+    background-color: #e04343;
+  }
+  
+  .popup button:last-child {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .popup button:last-child:hover {
+    background-color: #45a049;
+  }
+  
+  .popup button:focus {
+    outline: none;
+  }
+  
+  /* Overlay behind the popup */
+  div[ngIf="showDeletePopup"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

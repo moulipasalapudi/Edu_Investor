@@ -2,10 +2,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoanFormService } from '../../helpers/loan-form-helper.service';
+import { LoanService } from '../../services/loan.service';
 
-import { LoanService } from 'src/app/services/loan.service';
-import { Loan } from 'src/app/models/loan.model';
-import { LoanFormService } from 'src/app/helpers/loan-form-helper.service';
+
 
 @Component({
   selector: 'app-admineditloan',
@@ -14,7 +14,7 @@ import { LoanFormService } from 'src/app/helpers/loan-form-helper.service';
 })
 export class AdminEditLoanComponent implements OnInit {
   loanForm: FormGroup;
-  loanId: number;
+  loanId: number | undefined;
   isUpdated = false;
 
   constructor(
@@ -36,11 +36,12 @@ export class AdminEditLoanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loanId = +this.route.snapshot.paramMap.get('loanId');
+    const loanIdParam = this.route.snapshot.paramMap.get('loanId');
+    this.loanId = loanIdParam ? +loanIdParam : undefined;
     console.log(this.loanId);
 
-    if (!isNaN(this.loanId)) {
-      this.loanService.getLoanById(this.loanId).subscribe(
+    if (!isNaN(this.loanId ?? NaN)) {
+      this.loanService.getLoanById(this.loanId ?? 0).subscribe(
         (loan) => this.loanForm.patchValue(loan),
         (error) => console.log('Failed to load loan details', error)
       );

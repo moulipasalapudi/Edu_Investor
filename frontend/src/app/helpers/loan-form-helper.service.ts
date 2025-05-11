@@ -2,8 +2,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { Loan } from 'src/app/models/loan.model';
 import { LoanService } from '../services/loan.service';
+import { Loan } from '../models/loan.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LoanFormService {
 
   constructor(private loanService: LoanService, private router: Router) { }
 
-  saveOrUpdateLoan(form: FormGroup, loanId?: number, successMessage: string = "Loan Saved Successfully"): void {
+  saveOrUpdateLoan(form: FormGroup, loanId?: number, successMessage: string = "Loan Saved Successfully"):any{
     if (form.invalid) {
       console.log("Form is not valid");
       return;

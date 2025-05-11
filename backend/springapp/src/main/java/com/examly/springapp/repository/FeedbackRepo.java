@@ -9,10 +9,10 @@ import com.examly.springapp.model.Feedback;
 @Repository
 public interface FeedbackRepo extends JpaRepository<Feedback, Long> {
 
-    @Query(value="SELECT f.*,u.username FROM feedback f JOIN user u ON f.user_id = u.user_id WHERE f.user_id = ?1", nativeQuery = true)
+    @Query(value="SELECT f.*,u.username FROM feedback f JOIN users u ON f.user_id = u.user_id WHERE f.user_id = ?1", nativeQuery = true)
     List<Feedback> getFeedbacksByUserId(Long userId);
 
-    @Query(value="SELECT f.* FROM feedback f JOIN user u ON f.user_id = u.user_id", nativeQuery = true)
+    @Query(value="SELECT f.* FROM feedback f JOIN users u ON f.user_id = u.user_id", nativeQuery = true)
     List<Feedback> getFeedbacks();
     // @Query(value="SELECT f.*,u.username FROM feedback f JOIN user u ON f.user_id = u.user_id", nativeQuery = true)
     // List<Feedback> getAllFeedbacks();

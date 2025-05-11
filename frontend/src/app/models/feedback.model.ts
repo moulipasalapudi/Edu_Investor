@@ -6,9 +6,9 @@ export class Feedback {
 
     userId?: number;
 
-    feedbackText: string;
+    feedbackText: string | undefined;
 
-    date: Date;
+    date: Date | undefined;
     user?:User;
 
 

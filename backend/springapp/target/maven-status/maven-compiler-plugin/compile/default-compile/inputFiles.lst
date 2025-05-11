@@ -34,5 +34,6 @@ C:\Users\10828906\Downloads\Edu_investor\backend\springapp\src\main\java\com\exa
 C:\Users\10828906\Downloads\Edu_investor\backend\springapp\src\main\java\com\examly\springapp\exception\UserNotFoundException.java
 C:\Users\10828906\Downloads\Edu_investor\backend\springapp\src\main\java\com\examly\springapp\model\Feedback.java
 C:\Users\10828906\Downloads\Edu_investor\backend\springapp\src\main\java\com\examly\springapp\config\SwaggerApiConfig.java
+C:\Users\10828906\Downloads\Edu_investor\backend\springapp\src\main\java\com\examly\springapp\model\dto\ErrorResponseDTO.java
 C:\Users\10828906\Downloads\Edu_investor\backend\springapp\src\main\java\com\examly\springapp\service\LoanApplicationServiceImpl.java
 C:\Users\10828906\Downloads\Edu_investor\backend\springapp\src\main\java\com\examly\springapp\model\dto\FeedbackDTO.java

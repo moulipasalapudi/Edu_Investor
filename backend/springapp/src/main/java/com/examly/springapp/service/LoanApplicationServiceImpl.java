@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.examly.springapp.exception.LoanApplicationNotFoundException;
@@ -82,6 +84,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
      *         are found
      */
     @Override
+    // @Cacheable(value = "loanApplicationByUserId", key = "#userId")
     public List<LoanApplication> getLoanApplicationByUserId(Long userId) {
         User user = userRepo.findById(userId).orElse(null);
         if (user == null) {
@@ -98,6 +101,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
      * @return the loan application with the specified ID or null if not found
      */
     @Override
+    // @Cacheable(value = "loanApplicationById", key = "#loanapplicationId")
     public Optional<LoanApplication> getLoanApplicationById(Long loanapplicationId) {
         Optional<LoanApplication> loanApplication = loanApplicationRepo.findById(loanapplicationId);
         return loanApplication;
@@ -109,6 +113,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
      * @return a list of all loan applications
      */
     @Override
+    // @Cacheable(value = "allLoanApplications")
     public List<LoanApplication> getAllLoanApplications() {
         return loanApplicationRepo.findAll();
     }
@@ -146,6 +151,7 @@ public class LoanApplicationServiceImpl implements LoanApplicationService {
      * @return the deleted loan application or null if not found
      */
     @Override
+    // @CacheEvict(value = "loanApplicationById", key = "#loanApplicationId")
     public LoanApplication deleteLoanApplication(Long loanApplicationId) {
         if (loanApplicationRepo.existsById(loanApplicationId)) {
             LoanApplication existingLoanApplication = loanApplicationRepo.findById(loanApplicationId).orElse(null);

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoanService } from 'src/app/services/loan.service';
+import { LoanService } from '../../services/loan.service';
+
 // import * as mammoth from 'mammoth';
  
 @Component({
@@ -17,7 +18,7 @@ export class LoanformComponent implements OnInit {
   file: { sizeExceeded: boolean } = { sizeExceeded: false };
   loanId: string | null = null;
   userId: string | null = null;
-  img: string;
+  img: string | undefined;
  
   constructor(
     private fb: FormBuilder,

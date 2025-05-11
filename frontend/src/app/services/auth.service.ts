@@ -15,11 +15,12 @@ export class AuthService {
   private userIdSubject = new BehaviorSubject<number | null>(null);
 
 
-  public apiUrl = "https://8080-cbbbeffcbaeedecadbbfbaebabfcfdfcdfdeacdcff.premiumproject.examly.io/api"
+  public apiUrl = "http://localhost:8080/api"
   // public apiUrl="https://ide-afacbbedadbcbecadbbfbaebabfcfdfcdfdeacdcff.premiumproject.examly.io/proxy/3001"
   constructor(private http:HttpClient,private authHelper:AuthHelperService) { }
 
   register(user:User):Observable<any>{
+    console.log("AuthService: ", user);
     // return this.http.post<any>(this.apiUrl+'/users', user);
     return this.http.post<any>(this.apiUrl+'/register', user);
   }
@@ -29,16 +30,17 @@ export class AuthService {
       sessionStorage.setItem('jwtToken', response.token);
       const decodedToken: any = this.authHelper.decodeToken(response.token);
       this.authHelper.setRole(decodedToken?.role);
+      console.log()
       this.authHelper.setUserName(decodedToken?.username);
       this.authHelper.setUserId(Number(decodedToken?.userId))
-      console.log(this.authHelper.getUserName());
+      console.log("UserName:",this.authHelper.getUserName());
       console.log(this.authHelper.getUserId());
       
       
       // this.authHelper.setUserId(decodedToken?.id);
-      console.log(this.authHelper.getUserRole());
+      console.log("Role",this.authHelper.getUserRole());
       // console.log(this.authHelper.getUserId());
-      console.log(decodedToken);
+      console.log("Token",decodedToken);
 
 
       sessionStorage.setItem('userId', decodedToken?.userId)

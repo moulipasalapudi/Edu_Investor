@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthHelperService } from 'src/app/helpers/auth-helper.service';
+import { jwtDecode } from 'jwt-decode';
+
 
 @Component({
   selector: 'app-adminnav',
@@ -12,16 +13,19 @@ export class AdminnavComponent implements OnInit {
   showLogoutConfirmation = false;
   username: string = '';
 
-  constructor(private router: Router, private authHelper: AuthHelperService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.getUsernameFromToken();
   }
+   decodeToken(token:string):any{
+      return jwtDecode(token);
+    }
 
   getUsernameFromToken(): void {
     const token = sessionStorage.getItem('jwtToken');
     if (token) {
-      const decodedToken = this.authHelper.decodeToken(token);
+      const decodedToken = this.decodeToken(token);
       this.username=decodedToken?.username;
     }
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthHelperService } from 'src/app/helpers/auth-helper.service';
+import { LoanService } from '../../services/loan.service';
+import { AuthHelperService } from '../../helpers/auth-helper.service';
  
 @Component({
   selector: 'app-usernav',
@@ -17,7 +18,11 @@ export class UsernavComponent implements OnInit {
     this.router.navigate([route]);
   }
   logout() {
+    sessionStorage.clear();
+    localStorage.clear();
+    this.activeDropdown = null;
     alert("Logged out successfully!");
+
     this.router.navigate(['/login']);
   }
  

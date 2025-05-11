@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Loan } from 'src/app/models/loan.model';
-import { LoanApplication } from 'src/app/models/loanapplication.model';
-import { LoanService } from 'src/app/services/loan.service';
+import { Loan } from '../../models/loan.model';
+import { LoanService } from '../../services/loan.service';
+import { LoanApplication } from '../../models/loanapplication.model';
+
 
 @Component({
   selector: 'app-userviewloan',
@@ -22,7 +23,8 @@ export class UserviewloanComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userId = +sessionStorage.getItem('userId');
+    const userIdString = sessionStorage.getItem('userId');
+    this.userId = userIdString ? +userIdString : null;
     if (this.userId) {
       this.fetchLoans();
       this.fetchAppliedLoans();

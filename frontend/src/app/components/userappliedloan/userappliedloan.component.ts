@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoanApplication } from 'src/app/models/loanapplication.model';
-import { LoanService } from 'src/app/services/loan.service';
-import { Loan } from 'src/app/models/loan.model';
+import { LoanApplication } from '../../models/loanapplication.model';
+import { Loan } from '../../models/loan.model';
+import { LoanService } from '../../services/loan.service';
+
 
 @Component({
   selector: 'app-userappliedloan',
@@ -18,18 +19,19 @@ export class UserappliedloanComponent implements OnInit {
   constructor(private loanService: LoanService) {}
 
   ngOnInit(): void {
-    const userId = +sessionStorage.getItem('userId'); 
+    const userIdString = sessionStorage.getItem('userId');
+    const userId = userIdString ? +userIdString : 0;
     this.fetchAppliedLoans(userId);
     this.fetchLoans();
   }
 
   fetchAppliedLoans(userId: number): void {
     this.loanService.getAppliedLoans(userId).subscribe(
-      (data) => {
+      (data: LoanApplication[]) => {
         this.appliedLoans = data;
         console.log('Applied Loans:', this.appliedLoans);
       },
-      (error) => {
+      (error: any) => {
         console.error('Error fetching applied loans:', error);
       }
     );
@@ -37,11 +39,11 @@ export class UserappliedloanComponent implements OnInit {
 
   fetchLoans(): void {
     this.loanService.getAllLoans().subscribe(
-      (data) => {
+      (data: Loan[]) => {
         this.loans = data;
         console.log(this.loans);
       },
-      (error) => {
+      (error: any) => {
         console.error('Error fetching loans:', error);
       }
     );
@@ -71,7 +73,7 @@ export class UserappliedloanComponent implements OnInit {
           this.showDeletePopup = false;
           this.loanToDelete = null;
         },
-        (error) => {
+        (error: any) => {
           console.error('Error deleting loan application:', error);
         }
       );

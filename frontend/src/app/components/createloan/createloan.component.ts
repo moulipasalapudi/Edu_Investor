@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoanFormService } from 'src/app/helpers/loan-form-helper.service';
+import { LoanFormService } from '../../helpers/loan-form-helper.service';
+
  
 @Component({
   selector: 'app-createloan',
@@ -30,14 +31,23 @@ export class CreateloanComponent implements OnInit {
     this.showPopup = false;
   }
  
-  saveOrUpdateLoan(): void {
+
+  saveOrUpdateLoan(): any {
     if (this.loanForm.valid) {
-      this.loanFormService.saveOrUpdateLoan(this.loanForm);
-      this.popupMessage = 'Loan saved successfully!';
-      this.showPopup = true;
-    } else {
-      return;
+      this.loanFormService.saveOrUpdateLoan(this.loanForm).subscribe({
+        next: (response: any) => {
+          this.popupMessage = 'Loan saved successfully!';
+          this.showPopup = true;
+        },
+        error: (error: { error: { errorCode: string; }; }) => {
+          if (error.error && error.error.errorCode === 'LOAN_ALREADY_EXISTS') {
+            this.popupMessage = 'Loan already exists!';
+          } else {
+            this.popupMessage = 'An unexpected error occurred.';
+          }
+          this.showPopup = true;
+        }
+      });
     }
-  }
 }
- 
+}

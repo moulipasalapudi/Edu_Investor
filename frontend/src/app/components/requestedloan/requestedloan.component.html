@@ -20,6 +20,7 @@
     <th>Tuition Fee</th>
     <th>Status</th>
     <th>Action</th>
+    <th>Proof</th>
     </tr>
     </thead>
     <tbody>
@@ -36,6 +37,7 @@
     <button (click)="approveLoan(loan)" [disabled]="loan.loanStatus !== 0">Approve</button>
     <button (click)="rejectLoan(loan)" [disabled]="loan.loanStatus !== 0">Reject</button>
     </td>
+    <td>{{loan.proof}}</td>
     </tr>
     </tbody>
     </table>

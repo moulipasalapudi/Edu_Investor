@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Loan } from 'src/app/models/loan.model';
-import { LoanApplication } from 'src/app/models/loanapplication.model';
-import { LoanService } from 'src/app/services/loan.service';
+
+import { Loan } from '../../models/loan.model';
+import { LoanService } from '../../services/loan.service';
 
 @Component({
   selector: 'app-viewloan',

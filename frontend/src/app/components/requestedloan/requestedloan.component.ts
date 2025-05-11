@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoanApplication } from 'src/app/models/loanapplication.model';
-import { LoanService } from 'src/app/services/loan.service';
+
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { LoanApplication } from '../../models/loanapplication.model';
+import { LoanService } from '../../services/loan.service';
 
 @Component({
   selector: 'app-requestedloan',
@@ -11,11 +12,11 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class RequestedloanComponent implements OnInit {
 
   loanApplications: LoanApplication[] = [];
-  filteredLoans: LoanApplication[];
+  filteredLoans: LoanApplication[] | undefined;
   selectedLoan: LoanApplication | null = null;
   filterStatus: string = 'All';
   searchTerm: string = '';
-  sanitizedFileUrl: SafeUrl;
+  sanitizedFileUrl: SafeUrl | undefined;
 
   constructor(private loanService: LoanService, private sanitizer: DomSanitizer) {}
 
@@ -58,14 +59,14 @@ export class RequestedloanComponent implements OnInit {
 
   approveLoan(loan: LoanApplication): void {
     loan.loanStatus = 1;
-    this.loanService.updateLoanStatus(loan.loanApplicationId, loan).subscribe(() => {
+    this.loanService.updateLoanStatus(loan.loanApplicationId ?? 0, loan).subscribe(() => {
       this.fetchLoanApplications();
     });
   }
 
   rejectLoan(loan: LoanApplication): void {
     loan.loanStatus = 2;
-    this.loanService.updateLoanStatus(loan.loanApplicationId, loan).subscribe(() => {
+    this.loanService.updateLoanStatus(loan.loanApplicationId??0, loan).subscribe(() => {
       this.fetchLoanApplications();
     });
   }

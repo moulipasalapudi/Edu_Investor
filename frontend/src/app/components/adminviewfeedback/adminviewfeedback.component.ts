@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Feedback } from 'src/app/models/feedback.model';
-import { FeedbackService } from 'src/app/services/feedback.service';
+
 import { Subscription } from 'rxjs';
+import { FeedbackService } from '../../services/feedback.service';
+import { Feedback } from '../../models/feedback.model';
  
 @Component({
   selector: 'app-adminviewfeedback',
@@ -27,7 +28,7 @@ export class AdminviewfeedbackComponent implements OnInit {
     });
   }
  
-  showProfile(feedback): void {
+  showProfile(feedback: any): void {
     this.selectedFeedback = feedback;
   }
  

@@ -9,4 +9,5 @@ import com.examly.springapp.model.Loan;
 
 public interface LoanRepo extends JpaRepository<Loan,Long>{
 
+    boolean existsByLoanType(String loanType);
 }

@@ -4,48 +4,48 @@
     <form [formGroup]="loanForm" (ngSubmit)="saveOrUpdateLoan()">
         <label>Loan Type:</label>
         <input type="text" formControlName="loanType" required>
-        <div *ngIf="loanForm.get('loanType').invalid && loanForm.get('loanType').touched">
+        <div *ngIf="loanForm.get('loanType')?.invalid && loanForm.get('loanType')?.touched">
             <small *ngIf="loanForm.get('loanType').errors?.required">Loan Type is required.</small>
         </div>
  
         <label>Description:</label>
         <textarea formControlName="description" required></textarea>
-        <div *ngIf="loanForm.get('description').invalid && loanForm.get('description').touched">
+        <div *ngIf="loanForm.get('description')?.invalid && loanForm.get('description')?.touched">
             <small *ngIf="loanForm.get('description').errors?.required">Description is required.</small>
         </div>
  
         <label>Interest Rate (%):</label>
         <input type="number" formControlName="interestRate" required min="0">
-        <div *ngIf="loanForm.get('interestRate').invalid && loanForm.get('interestRate').touched">
+        <div *ngIf="loanForm.get('interestRate')?.invalid && loanForm.get('interestRate')?.touched">
             <small *ngIf="loanForm.get('interestRate').errors?.required">Interest Rate Required is required.</small>
         </div>
  
         <label>Maximum Amount:</label>
         <input type="number" formControlName="maximumAmount" required min="1">
-        <div *ngIf="loanForm.get('maximumAmount').invalid && loanForm.get('maximumAmount').touched">
+        <div *ngIf="loanForm.get('maximumAmount')?.invalid && loanForm.get('maximumAmount')?.touched">
             <small *ngIf="loanForm.get('maximumAmount').errors?.required">Maximum Amount is required.</small>
         </div>
  
         <label>Repayment Tenure (years):</label>
         <input type="number" formControlName="repaymentTenure" required min="1">
-        <div *ngIf="loanForm.get('repaymentTenure').invalid && loanForm.get('repaymentTenure').touched">
+        <div *ngIf="loanForm.get('repaymentTenure')?.invalid && loanForm.get('repaymentTenure')?.touched">
             <small *ngIf="loanForm.get('repaymentTenure').errors?.required"> RepaymentTenure is required.</small>
         </div>
  
         <label>Eligibility:</label>
         <input type="text" formControlName="eligibility" required>
-        <div *ngIf="loanForm.get('eligibility').invalid && loanForm.get('eligibility').touched">
+        <div *ngIf="loanForm.get('eligibility')?.invalid && loanForm.get('eligibility')?.touched">
             <small *ngIf="loanForm.get('eligibility').errors?.required">Eligibility is required.</small>
         </div>
  
         <label>Documents Required:</label>
         <input type="text" formControlName="documentsRequired" required>
-        <div *ngIf="loanForm.get('documentsRequired').invalid && loanForm.get('documentsRequired').touched">
+        <div *ngIf="loanForm.get('documentsRequired')?.invalid && loanForm.get('documentsRequired')?.touched">
             <small *ngIf="loanForm.get('documentsRequired').errors?.required">Documents Required is required.</small>
         </div>
  
         <div class="button-group">
-            <button type="submit" [disabled]="!loanForm.valid">Update Loan </button>
+            <button type="submit" >Update Loan </button>
             <button (click)="goBack()">Back</button>
         </div>
  

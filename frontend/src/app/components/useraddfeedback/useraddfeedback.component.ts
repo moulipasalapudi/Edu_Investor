@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthHelperService } from 'src/app/helpers/auth-helper.service';
-import { Feedback } from 'src/app/models/feedback.model';
-import { FeedbackService } from 'src/app/services/feedback.service';
+import { FeedbackService } from '../../services/feedback.service';
+import { AuthHelperService } from '../../helpers/auth-helper.service';
+import { Feedback } from '../../models/feedback.model';
+
  
 @Component({
   selector: 'app-useraddfeedback',
@@ -22,7 +23,7 @@ export class UseraddfeedbackComponent implements OnInit {
     }
  
     const feedback: Feedback = {
-      userId: +sessionStorage.getItem('userId'),
+      userId: +(sessionStorage.getItem('userId') || '0'),
       feedbackText: this.feedbackText,
       date: new Date()
     };

@@ -9,7 +9,7 @@ import { LoanApplication } from '../models/loanapplication.model';
 })
 export class LoanService {
 
-  public apiUrl: string = "https://8080-cbbbeffcbaeedecadbbfbaebabfcfdfcdfdeacdcff.premiumproject.examly.io/api";
+  public apiUrl: string = "http://localhost:8080/api";
 
   constructor(private http: HttpClient) { }
 
@@ -45,11 +45,12 @@ export class LoanService {
     return this.http.put<LoanApplication>(`${this.apiUrl}/loanapplication/${id}`, loanApplication);
   }
 
-  saveOrUpdateLoan(loan: Loan): Observable<Loan> {
+  saveOrUpdateLoan(loan: any): Observable<any> {
     if (loan.loanId) {
       return this.http.put<Loan>(`${this.apiUrl}/loan/${loan.loanId}`, loan);
     } else {
       return this.http.post<Loan>(`${this.apiUrl}/loan`, loan);
     }
   }
+  
 }

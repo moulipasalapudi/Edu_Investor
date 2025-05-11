@@ -6,14 +6,15 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthHelperService {
-  private currentUserId= new BehaviorSubject<number>(0);
-  private currentUserRole= new BehaviorSubject<string>("");
-  private currentUserName= new BehaviorSubject<string>("");
+  private currentUserId= new BehaviorSubject<number | null>(0);
+  private currentUserRole= new BehaviorSubject<string | null>("");
+  private currentUserName= new BehaviorSubject<string | null>("");
 
   
   
   setRole(role:string|null):void{
-    this.currentUserRole.next(role);
+    this.currentUserRole.next(role ?? "");
+    console.log("userrole:",this.currentUserRole.value);
   }
   setUserId(id:number):void{
     console.log((this.currentUserId.next(id)));
@@ -26,13 +27,13 @@ export class AuthHelperService {
   getUserId():number{
     // console.log(this.currentUserId.value);
     
-    return this.currentUserId.value;
+    return this.currentUserId.value ?? 0;
   }
   getUserRole():string{
-    return this.currentUserRole.value;
+    return this.currentUserRole.value ?? '';
   }
   getUserName():string{
-    return this.currentUserName.value;
+    return this.currentUserName.value ?? '';
   }
 
   clearUserData():void{
